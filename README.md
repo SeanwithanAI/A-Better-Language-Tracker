@@ -6,7 +6,7 @@
 
 **Study Log & Weekly Quizzes: track every language you're learning, sync with Anki, and get quizzed on what you actually studied**
 
-![Version](https://img.shields.io/badge/version-2026--11--14%20mk3-2C4A8A)
+![Version](https://img.shields.io/badge/version-2026--11--14%20mk4-2C4A8A)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-C8442B)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -95,6 +95,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-14 mk4** | The browser tab and home-screen icon now use the app's logo. |
 | **2026-11-14 mk3** | **Suggested Anki decks** for every preset language (starter, travel phrases, next step and advanced), with AnkiWeb ratings where known and links to each deck. On the Anki tab, in each language's settings, and on Today for new users. |
 | **2026-11-14 mk2** | The weekly quiz request lists the cards you've learned with IDs; Claude builds questions from them in new situations, the tracker checks every pasted question against your cards, and missed cards go on your forgetting list. New **Daily practice** from your decks' example sentences. **Tag them in Anki** for a filtered deck. Better card-field matching, right-to-left text, Conjugation and Noun genders skills, and Russian, Vietnamese, Arabic and Hindi presets. |
 | **2026-11-14 mk1** | **Anki sync** through AnkiConnect: finds and matches your decks, keeps counts up to date, logs review time, shows each deck's week, lists the cards you keep forgetting with Claude memory help and practice, a weekly check-in with Claude, and quizzes that aim at your trouble cards. |
