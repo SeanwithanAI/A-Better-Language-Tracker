@@ -2,13 +2,13 @@
 
 A study log and weekly quiz for any language, in a single HTML file. It runs on its own in any web browser, or inside [PageVault](https://github.com/SeanwithanAI/PageVault), where each person's data is saved on your server.
 
-**Current version: 2026-11-14 mk1** · by SeanwithanAI
+**Current version: 2026-11-14 mk2** · by SeanwithanAI
 
 ![Today](docs/screenshots/today.png) ![Anki](docs/screenshots/anki.png) ![Quiz results](docs/screenshots/quiz.png)
 
 ## What it does
 
-- **Any languages.** Start from a preset (Japanese, Korean, Mandarin, Tagalog, Spanish, French, German, Italian, Portuguese) or add your own. Each language has its own color, flag, notes and goal date.
+- **Any languages.** Start from a preset (Japanese, Korean, Mandarin, Tagalog, Spanish, French, German, Italian, Portuguese, Russian, Vietnamese, Arabic, Hindi) or add your own. Each language has its own color, flag, notes and goal date.
 - **Today screen.**
   - Today's plan, plus a "low-energy day" minimum.
   - Day streak, days studied this week, and minutes against your weekly goal.
@@ -23,20 +23,22 @@ A study log and weekly quiz for any language, in a single HTML file. It runs on 
   - Each entry has a reading, meaning and note.
   - Add many at once by pasting lines like `word = meaning`.
   - Searchable.
-- **Weekly quiz, written by Claude.**
-  1. The app builds a request from your levels, counts, recent words and your chosen question mix.
-  2. Tap **Open Claude** (or copy the request into any AI chat).
-  3. Paste the reply back in.
-  4. You get a scored quiz with explanations, a skill ranking, and one skill to focus on next week.
-  
-  No account or API key is needed in the app.
+- **Weekly quiz, written by Claude, from what you've actually learned.**
+  1. The app builds a request with a sample of the cards you've learned (from your synced Anki decks and your Words list). Each card has an ID like `D1-13kw`, and the sample leans toward new cards and ones you keep forgetting.
+  2. Claude is asked to use only those items, put them into new everyday situations instead of copying the cards, and tag each question with the IDs it tests.
+  3. Tap **Open Claude** (long requests are copied for you), or paste the request into any AI chat.
+  4. Paste the reply back. The tracker checks every question against your cards and leaves out any that use cards you haven't learned.
+  5. You get a scored quiz with explanations, a skill ranking and a focus for next week. Cards you miss go on your "keep forgetting" list.
+
+  It's free with any Claude account. No API key needed.
+- **Daily practice (free, offline).** Instant questions from your learned cards: fill in the blank using your decks' example sentences, sentence meanings, and words both ways. It rotates through all your decks and leans toward cards you keep forgetting and new ones.
 - **Quick quiz from your words.** Instant, offline practice from your own list. It doesn't count toward your weekly ranking.
 - **Anki sync** (desktop Anki with the free [AnkiConnect](https://ankiweb.net/shared/info/2055492159) add-on, code `2055492159`):
   - Finds your decks and matches each one to a language and skill (for example Core 6k → vocabulary, JLAB → grammar, KKLC → kanji). You can change any match.
   - Keeps your counts up to date from the cards you've started or matured in each deck.
   - Logs your Anki review time and review count for each day, separately from the minutes you type.
   - Shows each deck's week: reviews, retention, time, and cards started.
-  - Lists the cards you keep forgetting (forgotten 2+ times, or Again in the last 2 weeks), worst first. Ask Claude for memory tricks on one card or several, practice them in a quick quiz, or mark one as "got it".
+  - Lists the cards you keep forgetting (forgotten 2+ times, Again in the last 2 weeks, or missed in a quiz), worst first. **Tag them in Anki** to review just those in a filtered deck. Ask Claude for memory tricks on one card or several, practice them in a quick quiz, or mark one as "got it".
   - Weekly check-in with Claude: sends your week's Anki numbers, log, quiz results and toughest cards for a review, suggested changes and memory tricks.
   - Your weekly quiz request includes your Anki stats and the cards you keep forgetting, so about a third of the questions aim at them.
   - Syncs on its own when the tracker opens on the computer with Anki, and every 10 minutes while it's open. Your phone shows the last sync.
@@ -54,7 +56,7 @@ A study log and weekly quiz for any language, in a single HTML file. It runs on 
 
 ## Using it
 
-- **On its own:** download `A-Better-Language-Tracker-2026-11-14-mk1.html` and open it in a browser.
+- **On its own:** download `A-Better-Language-Tracker-2026-11-14-mk2.html` and open it in a browser.
 - **In PageVault:** upload the HTML file as an app.
 
 Previous versions of these apps are at https://github.com/SeanwithanAI?tab=repositories.
