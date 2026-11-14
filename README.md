@@ -2,9 +2,9 @@
 
 A study log and weekly quiz for any language, in a single HTML file. It runs on its own in any web browser, or inside [PageVault](https://github.com/SeanwithanAI/PageVault), where each person's data is saved on your server.
 
-**Current version: 2026-11-14** · by SeanwithanAI
+**Current version: 2026-11-14 mk1** · by SeanwithanAI
 
-![Today](docs/screenshots/today.png) ![Quiz results](docs/screenshots/quiz.png)
+![Today](docs/screenshots/today.png) ![Anki](docs/screenshots/anki.png) ![Quiz results](docs/screenshots/quiz.png)
 
 ## What it does
 
@@ -31,6 +31,15 @@ A study log and weekly quiz for any language, in a single HTML file. It runs on 
   
   No account or API key is needed in the app.
 - **Quick quiz from your words.** Instant, offline practice from your own list. It doesn't count toward your weekly ranking.
+- **Anki sync** (desktop Anki with the free [AnkiConnect](https://ankiweb.net/shared/info/2055492159) add-on, code `2055492159`):
+  - Finds your decks and matches each one to a language and skill (for example Core 6k → vocabulary, JLAB → grammar, KKLC → kanji). You can change any match.
+  - Keeps your counts up to date from the cards you've started or matured in each deck.
+  - Logs your Anki review time and review count for each day, separately from the minutes you type.
+  - Shows each deck's week: reviews, retention, time, and cards started.
+  - Lists the cards you keep forgetting (forgotten 2+ times, or Again in the last 2 weeks), worst first. Ask Claude for memory tricks on one card or several, practice them in a quick quiz, or mark one as "got it".
+  - Weekly check-in with Claude: sends your week's Anki numbers, log, quiz results and toughest cards for a review, suggested changes and memory tricks.
+  - Your weekly quiz request includes your Anki stats and the cards you keep forgetting, so about a third of the questions aim at them.
+  - Syncs on its own when the tracker opens on the computer with Anki, and every 10 minutes while it's open. Your phone shows the last sync.
 - **History.** Quiz results by week, recent study days, and how each count has changed.
 - **Charts.** Minutes per week for the last 8 weeks, stacked by language.
 
@@ -45,7 +54,7 @@ A study log and weekly quiz for any language, in a single HTML file. It runs on 
 
 ## Using it
 
-- **On its own:** download `A-Better-Language-Tracker-2026-11-14.html` and open it in a browser.
+- **On its own:** download `A-Better-Language-Tracker-2026-11-14-mk1.html` and open it in a browser.
 - **In PageVault:** upload the HTML file as an app.
 
 Previous versions of these apps are at https://github.com/SeanwithanAI?tab=repositories.
