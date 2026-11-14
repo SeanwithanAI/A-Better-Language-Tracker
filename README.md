@@ -6,7 +6,7 @@
 
 **Study Log & Weekly Quizzes: track every language you're learning, sync with Anki, and get quizzed on what you actually studied**
 
-![Version](https://img.shields.io/badge/version-2026--11--14%20mk2-2C4A8A)
+![Version](https://img.shields.io/badge/version-2026--11--14%20mk3-2C4A8A)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-C8442B)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -26,6 +26,7 @@ A Better Language Tracker keeps your study log, goals, word lists and weekly qui
 ## Features
 
 - **Any language.** Start from a preset (Japanese, Korean, Mandarin, Tagalog, Spanish, French, German, Italian, Portuguese, Russian, Vietnamese, Arabic, Hindi) or add your own. Each language has its own color, flag, level notes, counts, goal date and quiz mix. Right-to-left scripts display correctly.
+- **Suggested Anki decks for every preset.** A starter deck, travel phrases and next steps for each language, picked from AnkiWeb ratings (thumbs up / down shown where known) and learner guides like Refold and TheMoeWay, with a link to each deck on AnkiWeb. Decks you already have are marked. Where no highly-rated deck exists, it says so.
 - **Today at a glance.** Today's plan from your weekly schedule, a low-energy-day minimum, your day streak, days studied this week, and minutes against your weekly goal. Tap any day of the week to edit it.
 - **Study log.** Minutes per language (with +10 / +30 buttons), what you did from your own list of activities, and a note. Go back and fix any day.
 - **Counts and milestones.** Track words, kanji, characters, lessons or phrases. Give a count a milestone and a date, and see how many per week you need and whether you're on pace, based on your own updates.
@@ -71,7 +72,7 @@ A Better Language Tracker keeps your study log, goals, word lists and weekly qui
 ## Getting started
 
 1. Open `A-Better-Language-Tracker-<date>-<mk>.html` in any modern browser, or open it from **PageVault**.
-2. Pick the languages you're studying. Change counts, goals and the quiz mix in **Settings**.
+2. Pick the languages you're studying. Change counts, goals and the quiz mix in **Settings**. The **Anki** tab suggests good free decks to start with.
 3. **Anki (optional):** in Anki on your computer, go to **Tools → Add-ons → Get Add-ons…**, enter `2055492159` and restart Anki. Then open the tracker on that computer, go to the **Anki** tab, tap **Connect to Anki**, and choose **Yes** in Anki's pop-up.
 4. Log your study on the **Log** tab, and take the **Weekly quiz** on your quiz day.
 
@@ -94,6 +95,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-14 mk3** | **Suggested Anki decks** for every preset language (starter, travel phrases, next step and advanced), with AnkiWeb ratings where known and links to each deck. On the Anki tab, in each language's settings, and on Today for new users. |
 | **2026-11-14 mk2** | The weekly quiz request lists the cards you've learned with IDs; Claude builds questions from them in new situations, the tracker checks every pasted question against your cards, and missed cards go on your forgetting list. New **Daily practice** from your decks' example sentences. **Tag them in Anki** for a filtered deck. Better card-field matching, right-to-left text, Conjugation and Noun genders skills, and Russian, Vietnamese, Arabic and Hindi presets. |
 | **2026-11-14 mk1** | **Anki sync** through AnkiConnect: finds and matches your decks, keeps counts up to date, logs review time, shows each deck's week, lists the cards you keep forgetting with Claude memory help and practice, a weekly check-in with Claude, and quizzes that aim at your trouble cards. |
 | **2026-11-14** | First release. |
