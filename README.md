@@ -89,7 +89,7 @@ If the tracker can't connect to Anki, open **Tools → Add-ons → AnkiConnect �
 
 Prefer to keep your own copy of the file? The steps below cover that.
 
-The app is one self-contained `.html` file: no install, no account, nothing else to download. Grab the newest `A-Better-Language-Tracker-<date>.html` (later releases the same day end in `mkN`): open it in the file list above, then use the **Download raw file** button (↓) at the top right of the file view.
+The app is one self-contained `.html` file: no install, no account, nothing else to download. Download `A-Better-Language-Tracker-<date>.html`: open it in the file list above, then use the **Download raw file** button (↓) at the top right of the file view.
 
 **Desktop (Windows, macOS, Linux)**
 1. Download the file and move it somewhere permanent, like Documents.
@@ -121,22 +121,12 @@ The tracker never changes anything in Anki except the optional `tracker::forgett
 
 ## Versioning
 
-`docs/index.html` is always a copy of the newest version: it's what the web link opens.
+Only the newest release is kept here: `A-Better-Language-Tracker-2026-11-16-mk2.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
 
-Every release is a new file named with the release date. The first release of a day is just the date; later releases that same day add `mk1`, `mk2`, `mk3`… (the count starts over each day), e.g. `A-Better-Language-Tracker-2026-11-14.html`, then `A-Better-Language-Tracker-2026-11-14-mk1.html`. The version also appears under the app's name and in Settings. Older files stay in the repo, so PageVault can roll back to any of them.
+Releases are named with their date. The first release of a day is just the date; later releases that same day add `mk1`, `mk2`, `mk3`… (the count starts over each day). The version is also shown inside the app.
 
 | Version | Notes |
 |---|---|
-| **2026-11-16 mk2** | **Use it online.** The app now has a web link, [seanwithanai.github.io/A-Better-Language-Tracker](https://seanwithanai.github.io/A-Better-Language-Tracker/), that works on any device, including iPhone and iPad, and always has the newest version. The preview shown when the file can't run points to it. |
-| **2026-11-16 mk1** | The preview now says plainly that, because of iOS, an HTML file saved on an iPhone or iPad can't be opened in Safari, and points to PageVault instead. |
-| **2026-11-16** | **Pick your AI chat.** Quizzes, weekly check-ins and memory help can go to Claude, ChatGPT, Gemini or any other AI chat (Settings → AI chat; Claude stays the default). The preview shown when the file can't run now explains how to open it on each device. |
-| **2026-11-14 mk5** | **Time spent** on the History tab: time by type (Anki, grammar & lessons, immersion, and more) for a week, month, 3 months, 6 months, year or all time. Optional minutes next to each activity on the Log tab (language totals fill in from them), a type for each activity in Settings, Anki time split by deck, and a deck's full review history brought in on its first sync. |
-| **2026-11-14 mk4** | The browser tab and home-screen icon now use the app's logo. |
-| **2026-11-14 mk3** | **Suggested Anki decks** for every preset language (starter, travel phrases, next step and advanced), with AnkiWeb ratings where known and links to each deck. On the Anki tab, in each language's settings, and on Today for new users. |
-| **2026-11-14 mk2** | The weekly quiz request lists the cards you've learned with IDs; Claude builds questions from them in new situations, the tracker checks every pasted question against your cards, and missed cards go on your forgetting list. New **Daily practice** from your decks' example sentences. **Tag them in Anki** for a filtered deck. Better card-field matching, right-to-left text, Conjugation and Noun genders skills, and Russian, Vietnamese, Arabic and Hindi presets. |
-| **2026-11-14 mk1** | **Anki sync** through AnkiConnect: finds and matches your decks, keeps counts up to date, logs review time, shows each deck's week, lists the cards you keep forgetting with Claude memory help and practice, a weekly check-in with Claude, and quizzes that aim at your trouble cards. |
-| **2026-11-14** | First release. |
-
----
+| **2026-11-16 mk2** | Current release. |
 
 <div align="center"><sub>A Better Language Tracker · Study Log & Weekly Quizzes · by SeanwithanAI</sub></div>
