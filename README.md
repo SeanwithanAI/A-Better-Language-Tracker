@@ -6,7 +6,7 @@
 
 **Study Log & Weekly Quizzes: track every language you're learning, sync with Anki, and get quizzed on what you actually studied**
 
-![Version](https://img.shields.io/badge/version-2026--11--14%20mk5-2C4A8A)
+![Version](https://img.shields.io/badge/version-2026--11--16-2C4A8A)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-C8442B)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -21,7 +21,7 @@
 
 ## Overview
 
-A Better Language Tracker keeps your study log, goals, word lists and weekly quizzes for every language you're learning in one place. It syncs with Anki on your computer to track your progress automatically, finds the cards you keep forgetting, and uses Claude to write a weekly quiz from the cards you've actually learned. It's all in one HTML file, with nothing to install and no sign-up.
+A Better Language Tracker keeps your study log, goals, word lists and weekly quizzes for every language you're learning in one place. It syncs with Anki on your computer to track your progress automatically, finds the cards you keep forgetting, and has an AI chat (Claude, ChatGPT, Gemini or your own) write a weekly quiz from the cards you've actually learned. It's all in one HTML file, with nothing to install and no sign-up.
 
 ## Features
 
@@ -39,17 +39,17 @@ A Better Language Tracker keeps your study log, goals, word lists and weekly qui
   - **This week in Anki:** reviews, retention, time and cards started for each deck.
   - **Syncs on its own** whenever the tracker is open on the computer with Anki, and every 10 minutes while it's open. Your phone shows the last sync.
 - **Cards you keep forgetting.** Cards forgotten twice or more in Anki, pressed Again in the last two weeks, or missed in a quiz, worst first. For any of them:
-  - 💬 ask Claude for memory tricks, example sentences and how to tell look-alikes apart, for one card or several at once;
+  - 💬 ask your AI chat for memory tricks, example sentences and how to tell look-alikes apart, for one card or several at once;
   - ⚡ practice them in a quick quiz;
   - 🏷️ tag them in Anki to review just those in a filtered deck;
   - ✓ mark one as got it (it comes back if you forget it again).
-- **Weekly quiz, written by Claude from what you've learned.** Free with any Claude account:
-  1. The tracker sends Claude a sample of the cards you've learned, each with an ID like `D1-13kw`, leaning toward new cards and the ones you keep forgetting.
-  2. Claude builds every question from those cards in new, everyday situations (ordering food, asking directions, a text from a friend), and tags each question with the cards it tests.
+- **Weekly quiz, written by an AI chat from what you've learned.** Works with a free Claude, ChatGPT or Gemini account, or any AI chat you paste into (pick it in **Settings → AI chat**):
+  1. The tracker sends the AI a sample of the cards you've learned, each with an ID like `D1-13kw`, leaning toward new cards and the ones you keep forgetting.
+  2. The AI builds every question from those cards in new, everyday situations (ordering food, asking directions, a text from a friend), and tags each question with the cards it tests.
   3. Paste the reply back. The tracker checks every question against your cards and leaves out any that use cards you haven't learned.
   4. You get a score, explanations, a skill ranking with a focus for next week, and every card you missed goes on your forgetting list.
 - **Daily practice.** Free, offline questions built from your learned cards: fill in the blank in your decks' example sentences, sentence meanings, and words in both directions. It rotates through all your decks.
-- **Weekly check-in with Claude.** Sends your week's Anki numbers, study log, quiz results and toughest cards for a short review, what to change next week (like new cards per day), and memory tricks.
+- **Weekly check-in with your AI chat.** Sends your week's Anki numbers, study log, quiz results and toughest cards for a short review, what to change next week (like new cards per day), and memory tricks.
 - **Time spent.** See how long you've studied each kind of thing (Anki, grammar & lessons, immersion, kanji, speaking and more) over the last week, month, 3 months, 6 months, year or all time, with Anki split by deck. Add minutes next to each activity on the Log tab; Anki time is added on its own, including your full review history from before you started the tracker.
 - **History.** Quiz results by week, recent study days, and how each count has changed.
 - **Charts.** Minutes per week for the last 8 weeks, stacked by language.
@@ -62,11 +62,11 @@ A Better Language Tracker keeps your study log, goals, word lists and weekly qui
 
 | Weekly quiz | Daily practice |
 |---|---|
-| ![Weekly quiz: open Claude with a request listing the cards you've learned, then paste the reply back](docs/screenshots/quiz.png) | ![Daily practice: kanji, Tagalog phrases and grammar questions built from learned cards](docs/screenshots/practice.png) |
+| ![Weekly quiz: open your AI chat with a request listing the cards you've learned, then paste the reply back](docs/screenshots/quiz.png) | ![Daily practice: kanji, Tagalog phrases and grammar questions built from learned cards](docs/screenshots/practice.png) |
 
 | Cards you keep forgetting |
 |---|
-| ![Cards you keep forgetting: filter by skill, ask Claude, tag them in Anki, or practice them](docs/screenshots/anki.png) |
+| ![Cards you keep forgetting: filter by skill, ask your AI chat, tag them in Anki, or practice them](docs/screenshots/anki.png) |
 
 <sub>Screenshots use made-up example data.</sub>
 
@@ -92,8 +92,8 @@ The app is one self-contained `.html` file: no install, no account, nothing else
 
 **iPhone and iPad**
 Safari can't run a downloaded `.html` file. Tapping it in the Files app only shows a preview with the buttons turned off. Use one of these instead:
-- **PageVault (recommended).** Open the app's PageVault link in Safari, tap **Share → Add to Home Screen**, and it opens like a regular app. Your data is saved on your server and syncs with your other devices.
-- **Microsoft Edge.** Save the file to the Files app, then open it with Edge (in Files, tap and hold the file → **Share** → **Edge**). Keep backups: data saved this way can be lost if Edge clears its storage.
+- **PageVault (recommended).** Open the app's PageVault link in **Safari**, then tap **Share** (on iOS 26, tap **•••** first, then **Share**). Scroll down the list and tap **Add to Home Screen**. If it isn't there, tap **Edit Actions** at the bottom of the list and add it. It then opens like a regular app, and your data is saved on your server and syncs with your other devices.
+- **Microsoft Edge.** Save the file to the Files app, then open it with Edge (in Files, open the file, tap **Share** and choose **Edge**). Keep backups: data saved this way can be lost if Edge clears its storage.
 
 **Android**
 1. Download the file in Chrome.
@@ -118,6 +118,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-16** | **Pick your AI chat.** Quizzes, weekly check-ins and memory help can go to Claude, ChatGPT, Gemini or any other AI chat (Settings → AI chat; Claude stays the default). The preview shown when the file can't run now explains how to open it on each device. |
 | **2026-11-14 mk5** | **Time spent** on the History tab: time by type (Anki, grammar & lessons, immersion, and more) for a week, month, 3 months, 6 months, year or all time. Optional minutes next to each activity on the Log tab (language totals fill in from them), a type for each activity in Settings, Anki time split by deck, and a deck's full review history brought in on its first sync. |
 | **2026-11-14 mk4** | The browser tab and home-screen icon now use the app's logo. |
 | **2026-11-14 mk3** | **Suggested Anki decks** for every preset language (starter, travel phrases, next step and advanced), with AnkiWeb ratings where known and links to each deck. On the Anki tab, in each language's settings, and on Today for new users. |
