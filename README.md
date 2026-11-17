@@ -6,7 +6,7 @@
 
 **Study Log & Weekly Quizzes: track every language you're learning, sync with Anki, and get quizzed on what you actually studied**
 
-![Version](https://img.shields.io/badge/version-2026--11--16%20mk3-2C4A8A)
+![Version](https://img.shields.io/badge/version-2026--11--16%20mk4-2C4A8A)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-C8442B)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -121,7 +121,7 @@ The tracker never changes anything in Anki except the optional `tracker::forgett
 
 ## Versioning
 
-Only the newest release is kept in the repo: `A-Better-Language-Tracker-2026-11-16-mk3.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
+Only the newest release is kept in the repo: `A-Better-Language-Tracker-2026-11-16-mk4.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
 
 Releases are named with their date. The first release of a day is just the date; later releases that same day add `mk1`, `mk2`, `mk3`… (the count starts over each day). The version is also shown inside the app.
 
@@ -131,6 +131,7 @@ Every release so far, newest first. Older releases are listed for reference; onl
 
 | Version | Notes |
 |---|---|
+| **2026-11-16 mk4** | PageVault save status is accurate: a change on its way now shows **Saving to your server…** instead of briefly saying **Can't reach your server**, which only appears if a change still hasn't gone through after 10 seconds. |
 | **2026-11-16 mk3** | **Room to grow.** Opened on its own, the app now keeps its data in the browser's large storage (IndexedDB) instead of the small save area (about 5 MB, shared with every page on the same site), so a big history never runs out of room. Your data moves over automatically the first time you open this version. The app asks the browser to keep its data, and says so plainly if the browser ever can't save. In PageVault nothing changes. (An older copy of the file opened afterwards won't see data saved by this version, so use this one or newer.) |
 | **2026-11-16 mk2** | **Use it online.** The app now has a web link, [seanwithanai.github.io/A-Better-Language-Tracker](https://seanwithanai.github.io/A-Better-Language-Tracker/), that works on any device, including iPhone and iPad, and always has the newest version. The preview shown when the file can't run points to it. |
 | **2026-11-16 mk1** | The preview now says plainly that, because of iOS, an HTML file saved on an iPhone or iPad can't be opened in Safari, and points to PageVault instead. |
