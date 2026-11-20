@@ -29,6 +29,14 @@
     --shadow-sm:none; --shadow:none; color-scheme:dark;
   }
   *{box-sizing:border-box}
+  /* the app's own question and notice panel: centered on a computer, slides up from the bottom on a phone */
+  .askm{position:fixed;inset:0;background:rgba(10,16,15,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:60}
+  .askm[hidden]{display:none}
+  .askbox{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px;width:min(460px,100%);box-shadow:0 18px 50px rgba(0,0,0,.25);display:flex;flex-direction:column;gap:12px}
+  .askbox p{margin:0;font-size:15.5px;line-height:1.5}
+  .askbox input{font:inherit;font-size:16px;color:var(--ink);background:var(--surface-2,var(--surface));border:1px solid var(--line);border-radius:9px;padding:9px 11px;width:100%}
+  .askbox .acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  @media (max-width:640px){.askm{align-items:flex-end;padding:0}.askbox{width:100%;border-radius:18px 18px 0 0;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}}
   html,body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.5 var(--font);-webkit-text-size-adjust:100%}
   #nojs{display:none}
   html:not(.js) #nojs{display:block}
@@ -196,7 +204,7 @@
 <body>
 <div id="nojs" style="max-width:560px;width:calc(100% - 32px);box-sizing:border-box;margin:40px auto;padding:22px 24px;border:1px solid #E4E7EC;border-radius:16px;background:#fff;color:#101828;font:15px/1.6 system-ui,-apple-system,sans-serif">
   <h1 style="font-size:24px;font-weight:800;margin:0 0 6px;letter-spacing:-.02em">A Better Language Tracker</h1>
-  <p style="margin:0 0 14px;color:#667085;font-weight:600">Study Log &amp; Weekly Quizzes · Version 2026-11-16 mk4 · by SeanwithanAI</p>
+  <p style="margin:0 0 14px;color:#667085;font-weight:600">Study Log &amp; Weekly Quizzes · Version 2026-11-19 · by SeanwithanAI</p>
   <p style="margin:8px 0 0">This preview can’t run the app. Previews like the iPhone Files app show web pages without running them, so it stays blank here. To use it:</p>
   <p style="margin:8px 0 0"><b>Easiest, on any device:</b> use it online at <a href="https://seanwithanai.github.io/A-Better-Language-Tracker/">seanwithanai.github.io/A-Better-Language-Tracker</a>. Nothing to install, and your data stays in your browser on your device.</p>
   <p style="margin:8px 0 0"><b>On a computer:</b> double-click the file, or drag it onto Chrome, Edge, Firefox or Safari.</p>
@@ -208,7 +216,7 @@
   <header>
     <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="A Better Language Tracker logo"><defs><linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B6FD9"/><stop offset="1" stop-color="#2c4a8a"/></linearGradient><linearGradient id="lgl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#lbg)"/><rect width="64" height="64" rx="15" fill="url(#lgl)"/><path d="M12 14h24a5 5 0 0 1 5 5v13a5 5 0 0 1-5 5H24l-7 6v-6h-5a5 5 0 0 1-5-5V19a5 5 0 0 1 5-5z" fill="#fff"/><path d="M30 29h22a5 5 0 0 1 5 5v12a5 5 0 0 1-5 5h-4v6l-7-6H30a5 5 0 0 1-5-5V34a5 5 0 0 1 5-5z" fill="#c8442b"/><text x="24" y="32" font-size="15" font-weight="800" text-anchor="middle" fill="#2c4a8a" font-family="system-ui,sans-serif">A</text><text x="41" y="46" font-size="13" font-weight="800" text-anchor="middle" fill="#fff" font-family="'Hiragino Sans','Noto Sans JP',system-ui,sans-serif">あ</text><circle cx="52" cy="13" r="5" fill="#fff"/><path d="M49.6 13l1.7 1.7 3.2-3.4" stroke="#2f7d4f" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span class="bname">A Better Language Tracker<small>Study Log &amp; Weekly Quizzes</small><small class="by">by SeanwithanAI</small></span>
-      <span class="ver" id="appVer">2026-11-16 mk4</span></div>
+      <span class="ver" id="appVer">2026-11-19</span></div>
     <div class="headright">
       <span class="syncwrap"><span class="sync" id="sync" role="status">Loading…</span>
       <button type="button" class="nudge" id="nudge" hidden></button></span>
@@ -243,6 +251,7 @@
   <section class="view stack" id="v-settings" hidden></section>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="askm" id="askm" hidden><div class="askbox" id="askbox" role="alertdialog" aria-modal="true"></div></div>
 <script>
 /* ---- download this app: the HTML file for this exact version ----
    In PageVault it's the file exactly as installed. On its own it's this page's own source
@@ -308,7 +317,7 @@ async function downloadBundle(o){
 }
 
 /* ================================================================ app */
-const APP_NAME = 'A Better Language Tracker', APP_VERSION = '2026-11-16 mk4', APP_BY = 'SeanwithanAI';   // bump the version with every update
+const APP_NAME = 'A Better Language Tracker', APP_VERSION = '2026-11-19', APP_BY = 'SeanwithanAI';   // bump the version with every update
 const FILE_BASE = APP_NAME.replace(/ /g, '-');   // A-Better-Language-Tracker
 const KEY = 'langtracker-v1', THEME_KEY = 'langtracker-theme';
 const DAY = 864e5, BK_DAYS = 7;
@@ -330,6 +339,27 @@ const fmtN = n => Math.round(n).toLocaleString();
 const fmtMin = m => m >= 60 ? (Math.floor(m / 60) + ' h' + (m % 60 ? ' ' + (m % 60) + ' min' : '')) : m + ' min';
 const DOW = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 function toast(t){ const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('show'), 2600); }
+// the app's own yes/no, notice and text panels. Built-in confirm(), alert() and prompt() pop-ups are avoided:
+// on iPhone (Safari, and Brave and Chrome there too), one shown right after picking a file, as when
+// restoring a backup, can freeze or crash the page.
+let askDone = null;
+function ask(msg, okLabel, danger, opts){
+  opts = opts || {};
+  return new Promise(res => {
+    $('askbox').innerHTML = `<p>${esc(msg)}</p>${opts.input ? `<input type="text" id="askIn" autocomplete="off" placeholder="${esc(opts.placeholder || '')}">` : ''}
+      <div class="acts">${opts.noCancel ? '' : '<button class="btn" id="askNo">Cancel</button>'}<button class="btn ${danger ? 'danger' : 'pri'}" id="askYes">${esc(okLabel || 'OK')}</button></div>`;
+    $('askm').hidden = false;
+    askDone = v => { $('askm').hidden = true; askDone = null; res(v); };
+    $('askYes').onclick = () => askDone(opts.input ? $('askIn').value : true);
+    if($('askNo')) $('askNo').onclick = () => askDone(opts.input ? null : false);
+    if(opts.input) $('askIn').onkeydown = e => { if(e.key === 'Enter'){ e.preventDefault(); $('askYes').click(); } };
+    setTimeout(() => (opts.input ? $('askIn') : $('askYes')).focus(), 30);
+  });
+}
+const tell = msg => ask(msg, 'OK', false, {noCancel:true});
+const askText = (msg, placeholder, okLabel) => ask(msg, okLabel || 'OK', false, {input:true, placeholder});
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && askDone) askDone(null); });
+$('askm').addEventListener('click', e => { if(e.target === $('askm') && askDone) askDone(null); });
 
 /* ---- presets: a starting point for each language (everything can be changed in Settings) ---- */
 const SK = {
@@ -780,7 +810,7 @@ function vLog(){
     save(); toast(studied(rec) ? 'Saved ' + (logDate === t ? 'today' : longD(parseYmd(logDate))) + (dayTotal(rec) ? ': ' + fmtMin(dayTotal(rec)) : '') : 'Saved');
     vLog(); $('daySaved').textContent = '✓ Saved';
   };
-  if($('clearDay')) $('clearDay').onclick = () => { if(confirm('Clear everything logged for ' + longD(parseYmd(logDate)) + '?')){ delete S.days[logDate]; save(); vLog(); } };
+  if($('clearDay')) $('clearDay').onclick = async () => { if(await ask('Clear everything logged for ' + longD(parseYmd(logDate)) + '?', 'Clear', true)){ delete S.days[logDate]; save(); vLog(); } };
   $('saveCounts').onclick = () => {
     const d0 = todayStr();
     el.querySelectorAll('[data-ctr]').forEach(i => {
@@ -962,8 +992,8 @@ function vQuiz(){
       <div class="card"><div class="row"><button class="btn pri" id="submitQ" ${n ? '' : 'disabled'}>Check my answers</button><span class="muted" id="answered">${n} of ${Q.questions.length} answered</span><button class="btn danger sm" id="dropQ" style="margin-left:auto">Discard this quiz</button></div></div>`;
     el.querySelectorAll('[data-q]').forEach(r => r.onchange = () => { picks[+r.dataset.q] = +r.value; const k = Object.keys(picks).length; $('answered').textContent = k + ' of ' + Q.questions.length + ' answered'; $('submitQ').disabled = !k; Q.picks = Object.assign({}, picks); save(); });
     picks = Object.assign({}, Q.picks || {});
-    $('submitQ').onclick = () => {
-      if(Object.keys(picks).length < Q.questions.length && !confirm('Some questions aren’t answered. Check your answers anyway?')) return;
+    $('submitQ').onclick = async () => {
+      if(Object.keys(picks).length < Q.questions.length && !await ask('Some questions aren’t answered. Check your answers anyway?', 'Check answers')) return;
       const scores = {}; let c = 0;
       Q.questions.forEach((q, i) => { const key = q.lang + ':' + q.skill; const s = scores[key] = scores[key] || {c:0, t:0}; s.t++; if(picks[i] === q.answer){ s.c++; c++; } });
       Q.picks = Object.assign({}, picks); Q.submitted = true;
@@ -972,7 +1002,7 @@ function vQuiz(){
       Q.result = {total:{c, t:Q.questions.length}, scores};
       save(); vQuiz(); window.scrollTo({top:0});
     };
-    $('dropQ').onclick = () => { if(confirm('Discard this quiz? Your answers won’t be kept.')){ S.quiz = null; picks = {}; save(); vQuiz(); } };
+    $('dropQ').onclick = async () => { if(await ask('Discard this quiz? Your answers won’t be kept.', 'Discard', true)){ S.quiz = null; picks = {}; save(); vQuiz(); } };
     return;
   }
   if(Q && Q.submitted && !Q.closed){
@@ -1096,7 +1126,7 @@ function vWords(){
   };
   $('wSearch').oninput = e => { wordsQ = e.target.value; const pos = e.target.selectionStart; vWords(); const s = $('wSearch'); s.focus(); try{ s.setSelectionRange(pos, pos); }catch(x){} };
   el.querySelectorAll('[data-we]').forEach(b => b.onclick = () => { editWord = b.dataset.we; vWords(); $('wT').focus(); window.scrollTo({top:0}); });
-  el.querySelectorAll('[data-wd]').forEach(b => b.onclick = () => { const i = list.findIndex(w => w.id === b.dataset.wd); if(i >= 0 && confirm('Delete “' + list[i].t + '”?')){ list.splice(i, 1); save(); vWords(); } });
+  el.querySelectorAll('[data-wd]').forEach(b => b.onclick = async () => { const i = list.findIndex(w => w.id === b.dataset.wd); if(i >= 0 && await ask('Delete “' + list[i].t + '”?', 'Delete', true)){ list.splice(i, 1); save(); vWords(); } });
 }
 
 /* ================================================================ History */
@@ -1166,7 +1196,7 @@ function vHistory(){
       ${S.langs.map(l => l.counters.filter(c => (c.hist || []).length).map(c => `<h3>${esc(l.flag)} ${esc(c.name)}</h3><div class="scroll"><table><tbody><tr>${c.hist.slice(-10).map(x => `<td>${short(parseYmd(x.d))}<br><b>${fmtN(x.v)}</b></td>`).join('')}</tr></tbody></table></div>`).join('')).join('') || '<p class="empty">Update your counts on the Log tab to build a history.</p>'}</div>`;
   wireCommon(el);
   el.querySelectorAll('[data-tp]').forEach(b => b.onclick = () => { tPeriod = +b.dataset.tp; vHistory(); });
-  el.querySelectorAll('[data-rdel]').forEach(b => b.onclick = () => { if(confirm('Delete this quiz result?')){ S.results = S.results.filter(r => r.id !== b.dataset.rdel); save(); vHistory(); } });
+  el.querySelectorAll('[data-rdel]').forEach(b => b.onclick = async () => { if(await ask('Delete this quiz result?', 'Delete', true)){ S.results = S.results.filter(r => r.id !== b.dataset.rdel); save(); vHistory(); } });
 }
 
 /* ================================================================ Settings */
@@ -1271,18 +1301,18 @@ function wireSettings(el){
         save();
       }));
     });
-    d.querySelectorAll('[data-cdel]').forEach(b => b.onclick = () => { const c = l.counters.find(x => x.id === b.dataset.cdel); if(confirm('Remove “' + c.name + '” and its history?')){ l.counters = l.counters.filter(x => x !== c); save(); vSettings(); } });
+    d.querySelectorAll('[data-cdel]').forEach(b => b.onclick = async () => { const c = l.counters.find(x => x.id === b.dataset.cdel); if(await ask('Remove “' + c.name + '” and its history?', 'Remove', true)){ l.counters = l.counters.filter(x => x !== c); save(); vSettings(); } });
     d.querySelector('[data-addc]').onclick = () => { l.counters.push({id:uid(), name:'New count', target:0, value:0, milestone:null, words:false, hist:[]}); save(); vSettings(); };
     d.querySelectorAll('[data-sf]').forEach(i => i.addEventListener('input', () => { const s = l.skills[+i.dataset.si]; if(i.dataset.sf === 'name') s.name = i.value.trim() || 'Skill'; else s.n = Math.max(0, Math.min(20, Math.round(num(i.value)))); save(); }));
     d.querySelectorAll('[data-sdel]').forEach(b => b.onclick = () => { l.skills.splice(+b.dataset.sdel, 1); save(); vSettings(); });
-    d.querySelector('[data-addsk]').onchange = e => {
+    d.querySelector('[data-addsk]').onchange = async e => {
       const k = e.target.value; if(!k) return;
-      if(k === '_custom'){ const name = (prompt('Name of the skill (for example “Numbers” or “Conjugation”):') || '').trim(); if(!name) { e.target.value = ''; return; } l.skills.push({k:'s' + uid().slice(0, 4), name, n:3}); }
+      if(k === '_custom'){ const name = ((await askText('Name of the skill:', 'For example “Numbers” or “Conjugation”', 'Add')) || '').trim(); if(!name) { e.target.value = ''; return; } l.skills.push({k:'s' + uid().slice(0, 4), name, n:3}); }
       else l.skills.push({k, name:SK[k].name, n:3});
       save(); vSettings();
     };
-    d.querySelector('[data-ldel]').onclick = () => {
-      if(!confirm('Remove ' + l.name + '? Its counts, words and minutes are removed too.')) return;
+    d.querySelector('[data-ldel]').onclick = async () => {
+      if(!await ask('Remove ' + l.name + '? Its counts, words and minutes are removed too.', 'Remove', true)) return;
       S.langs = S.langs.filter(x => x !== l); delete S.words[l.id];
       Object.values(S.days).forEach(r => { if(r.min) delete r.min[l.id]; });
       S.acts.forEach(a => { if(a.lang === l.id) a.lang = null; });
@@ -1290,9 +1320,9 @@ function wireSettings(el){
       save(); vSettings(); renderCountdowns();
     };
   });
-  $('addLang').onclick = () => {
+  $('addLang').onclick = async () => {
     const p = PRESETS[+$('addPreset').value]; let name = '';
-    if(p.code === ''){ name = (prompt('Name of the language:') || '').trim(); if(!name) return; }
+    if(p.code === ''){ name = ((await askText('Name of the language:', '', 'Add')) || '').trim(); if(!name) return; }
     const l = langFromPreset(p, name); S.langs.push(l); openLang = l.id; save(); vSettings();
     toast('Added ' + l.name);
   };
@@ -1312,21 +1342,27 @@ function wireSettings(el){
   $('bkFile').onchange = e => restoreFile(e.target.files[0]);
   $('selfDl').onclick = () => downloadBundle({title:APP_NAME, version:APP_VERSION, base:FILE_BASE, htmlName:FILE_BASE + '-' + APP_VERSION.replace(/ /g, '-') + '.html',
     dataName:FILE_BASE + '-backup-' + todayStr() + '.json', data:backupJSON, done:markBackedUp, restore:'open Settings, choose Restore from backup and pick the file', say:toast});
-  $('wipe').onclick = () => {
-    if(prompt('This erases every language, log, word and quiz. Type ERASE to confirm.') !== 'ERASE') return;
+  $('wipe').onclick = async () => {
+    if(((await askText('This erases every language, log, word and quiz. Type ERASE to confirm.', 'ERASE', 'Erase')) || '').trim() !== 'ERASE') return;
     S = blank(); save(); toast('Everything was erased'); go('today');
   };
 }
 function restoreFile(f){
   if(!f) return;
   const r = new FileReader();
+  r.onerror = () => tell('That file couldn’t be read.');
   r.onload = () => {
-    try{
-      const o = JSON.parse(r.result);
-      if(!o || o.app !== APP_NAME || !o.data) throw new Error('This isn’t a backup from ' + APP_NAME + '.');
-      if(S.langs.length && !confirm('Replace everything in this tracker with the backup from ' + (o.exported ? longD(new Date(o.exported)) : 'that file') + '?')) return;
-      const lb = S.lastBackup; S = fix(o.data); S.lastBackup = lb || S.lastBackup; save(); toast('Backup restored'); go('today');
-    }catch(e){ alert(e.message || 'That file couldn’t be read.'); }
+    let o;
+    try{ o = JSON.parse(r.result); }catch(e){ o = null; }
+    if(!o || o.app !== APP_NAME || !o.data || typeof o.data !== 'object'){ tell('This isn’t a backup from ' + APP_NAME + '.'); return; }
+    // let the phone finish closing its file picker before asking anything
+    setTimeout(async () => {
+      if(S.langs.length && !await ask('Replace everything in this tracker with the backup from ' + (o.exported ? longD(new Date(o.exported)) : 'that file') + '?', 'Restore', true)) return;
+      try{
+        const lb = S.lastBackup, next = fix(o.data);
+        S = next; S.lastBackup = lb || S.lastBackup; save(); toast('Backup restored'); go('today');
+      }catch(e){ tell('That backup couldn’t be restored: ' + (e.message || 'unknown problem') + '. Your current data wasn’t changed.'); }
+    }, 250);
   };
   r.readAsText(f);
 }
@@ -1763,7 +1799,7 @@ function wireAnki(el){
     d.querySelector('[data-dm]').onchange = e => { dk.mode = e.target.value; save(); };
     d.querySelectorAll('[data-df]').forEach(s => s.onchange = () => { dk.f[s.dataset.df] = s.value; delete AN.cards[dk.id]; save(); toast('Sync to update this deck’s cards'); });
     d.querySelector('[data-dw]').onchange = e => { dk.words = e.target.checked; save(); };
-    d.querySelector('[data-drm]').onclick = () => { if(confirm('Stop syncing “' + dk.name + '”? Nothing in Anki changes.')){ AN.decks = AN.decks.filter(x => x !== dk); delete AN.cards[dk.id]; AN.trouble = AN.trouble.filter(i => i.deck !== dk.id); save(); vAnki(); } };
+    d.querySelector('[data-drm]').onclick = async () => { if(await ask('Stop syncing “' + dk.name + '”? Nothing in Anki changes.', 'Stop syncing', true)){ AN.decks = AN.decks.filter(x => x !== dk); delete AN.cards[dk.id]; AN.trouble = AN.trouble.filter(i => i.deck !== dk.id); save(); vAnki(); } };
   });
   $('dkFind').onclick = async () => { ankiBusy = true; vAnki(); try{ await listDecks(); ankiMsg = ''; }catch(e){ ankiBusy = false; ankiFail(e, false); return; } ankiBusy = false; vAnki(); };
   el.querySelectorAll('[data-dkadd]').forEach(b => b.onclick = async () => {
