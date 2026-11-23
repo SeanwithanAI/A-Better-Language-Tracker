@@ -6,7 +6,7 @@
 
 **Study Log & Weekly Quizzes: track every language you're learning, sync with Anki, and get quizzed on what you actually studied**
 
-![Version](https://img.shields.io/badge/version-2026--11--19-2C4A8A)
+![Version](https://img.shields.io/badge/version-2026--11--22%20mk1-2C4A8A)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-C8442B)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -46,14 +46,17 @@ A Better Language Tracker keeps your study log, goals, word lists and weekly qui
   - 🏷️ tag them in Anki to review just those in a filtered deck;
   - ✓ mark one as got it (it comes back if you forget it again).
 - **Weekly quiz, written by an AI chat from what you've learned.** Works with a free Claude, ChatGPT or Gemini account, or any AI chat you paste into (pick it in **Settings → AI chat**):
-  1. The tracker sends the AI a sample of the cards you've learned, each with an ID like `D1-13kw`, leaning toward new cards and the ones you keep forgetting.
+  1. The tracker sends the AI a sample of the cards you've learned, each with an ID like `D1-13kw`, plus how you did on last week's quiz. Each quiz builds on the last one: about a third of the questions go back over cards you missed or keep forgetting, a few re-check cards you got right last time in a harder situation, and the rest cover new and other learned cards.
   2. The AI builds every question from those cards in new, everyday situations (ordering food, asking directions, a text from a friend), and tags each question with the cards it tests.
   3. Paste the reply back. The tracker checks every question against your cards and leaves out any that use cards you haven't learned.
-  4. You get a score, explanations, a skill ranking with a focus for next week, and every card you missed goes on your forgetting list.
+  4. You get a score, a skill ranking with a focus for next week, and an explanation for every question. Any question you got wrong or skipped also shows an example sentence (with its meaning) using the right answer, so you can see how it's really used. Every card you missed goes on your forgetting list.
+  5. **💬 Go over my mistakes** sends the questions you got wrong (and what you picked) to your AI chat, which explains them and quizzes you until you get each one right.
+- **Every quiz builds on all the ones before it.** Each card keeps a record across every quiz and drill: how often you missed it, what you picked instead, and how many times in a row you've gotten it right since. Cards you keep missing come back (including a question against the answer you mixed it up with), cards you used to miss get re-checked in harder situations until they're right three times in a row, and cards you know come back now and then as review.
+- **Study plan until your next quiz.** After your weekly quiz, your AI chat turns your quiz history into a short lesson, a memory tip and a 4–5 question drill for each day until the next quiz. What you keep missing comes back every couple of days in a different way. Each day's lesson and drill shows on the Today tab, with catch-up for days you missed, and every drill feeds into your next quiz and plan.
 - **Daily practice.** Free, offline questions built from your learned cards: fill in the blank in your decks' example sentences, sentence meanings, and words in both directions. It rotates through all your decks.
 - **Weekly check-in with your AI chat.** Sends your week's Anki numbers, study log, quiz results and toughest cards for a short review, what to change next week (like new cards per day), and memory tricks.
 - **Time spent.** See how long you've studied each kind of thing (Anki, grammar & lessons, immersion, kanji, speaking and more) over the last week, month, 3 months, 6 months, year or all time, with Anki split by deck. Add minutes next to each activity on the Log tab; Anki time is added on its own, including your full review history from before you started the tracker.
-- **History.** Quiz results by week, recent study days, and how each count has changed.
+- **History.** Quiz results by week, every past quiz and drill to review question by question (with how many things you used to miss are now learned), recent study days, and how each count has changed.
 - **Charts.** Minutes per week for the last 8 weeks, stacked by language.
 - **Day, Dark and Auto** themes.
 - **Works on phones.**
@@ -131,6 +134,8 @@ Every release so far, newest first. Older releases are listed for reference; onl
 
 | Version | Notes |
 |---|---|
+| **2026-11-22 mk1** | **Quizzes build on your whole history.** Every quiz and drill is now kept (review any of them on the History tab), and each card keeps a record across all of them: times missed, what you picked instead, and how many times in a row you've gotten it right since. The weekly quiz uses that record to bring back what you keep missing, re-check what you used to miss until it sticks, and mix in what you know as review. **New study plan:** after your weekly quiz, your AI chat makes a short lesson and drill for each day until the next one, shown on the Today tab. **💬 Go over my mistakes** sends what you got wrong to your AI chat for a tutoring session. The weekly check-in now includes what you're still missing and how your drills went. |
+| **2026-11-22** | **The weekly quiz builds on last week.** Along with the cards you missed or keep forgetting (about a third of the questions), it now re-checks a few cards you got right last time in a harder situation, and the AI sees how you did on each skill last week. **Example sentences for wrong answers:** every question you get wrong or skip shows a short example sentence using the right answer, with its meaning, under a fuller explanation. A quiz request made with an older version is rebuilt automatically. |
 | **2026-11-19** | Fixes restoring a backup over existing data, which could freeze or crash the browser on iPhone (in Safari, Brave or Chrome). Every question and notice (restore, delete, discard, erase, naming a language or skill) now opens in the app's own panel instead of the browser's pop-up, and a backup that can't be read leaves your current data untouched. |
 | **2026-11-16 mk4** | PageVault save status is accurate: a change on its way now shows **Saving to your server…** instead of briefly saying **Can't reach your server**, which only appears if a change still hasn't gone through after 10 seconds. |
 | **2026-11-16 mk3** | **Room to grow.** Opened on its own, the app now keeps its data in the browser's large storage (IndexedDB) instead of the small save area (about 5 MB, shared with every page on the same site), so a big history never runs out of room. Your data moves over automatically the first time you open this version. The app asks the browser to keep its data, and says so plainly if the browser ever can't save. In PageVault nothing changes. (An older copy of the file opened afterwards won't see data saved by this version, so use this one or newer.) |
