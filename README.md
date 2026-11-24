@@ -4,7 +4,7 @@
 
 # A Better Language Tracker
 
-**Study Log & Weekly Quizzes: track every language you're learning, sync with Anki, and get quizzed on what you actually studied**
+**Study Log & Weekly Quizzes: track every language you're learning, sync with Anki, get quizzed on what you actually studied, and keep a journal with corrections**
 
 ![Version](https://img.shields.io/badge/version-2026--11--24-2C4A8A)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-C8442B)
@@ -23,7 +23,7 @@
 
 ## Overview
 
-A Better Language Tracker keeps your study log, goals, word lists and weekly quizzes for every language you're learning in one place. It syncs with Anki on your computer to track your progress automatically, finds the cards you keep forgetting, and has an AI chat (Claude, ChatGPT, Gemini or your own) write a weekly quiz from the cards you've actually learned. It's all in one HTML file, with nothing to install and no sign-up.
+A Better Language Tracker keeps your study log, goals, word lists and weekly quizzes for every language you're learning in one place. It syncs with Anki on your computer to track your progress automatically, finds the cards you keep forgetting, and has an AI chat (Claude, ChatGPT, Gemini or your own) write a weekly quiz from the cards you've actually learned. You can also keep a journal in the language you're learning: the AI corrects each entry, the tracker shows your mistakes in red with the fixes in green, and the mistakes you keep making come back in your quizzes until they stick. It's all in one HTML file, with nothing to install and no sign-up.
 
 ## Features
 
@@ -83,6 +83,7 @@ A Better Language Tracker keeps your study log, goals, word lists and weekly qui
 2. Pick the languages you're studying. Change counts, goals and the quiz mix in **Settings**. The **Anki** tab suggests good free decks to start with.
 3. **Anki (optional):** in Anki on your computer, go to **Tools → Add-ons → Get Add-ons…**, enter `2055492159` and restart Anki. Then open the tracker on that computer, go to the **Anki** tab, tap **Connect to Anki**, and choose **Yes** in Anki's pop-up.
 4. Log your study on the **Log** tab, and take the **Weekly quiz** on your quiz day.
+5. **Journal (optional):** write an entry on the **Journal** tab, tap the button to send it to your AI chat (or **Copy request** to paste it into any AI chat), then paste the reply back to see your corrections.
 
 Anki sync only works on the computer where Anki is running. Everything else works offline.
 
